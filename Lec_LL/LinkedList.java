@@ -1,5 +1,7 @@
 package Lec_LL;
 
+import java.util.Stack;
+
 public class LinkedList {
 	class Node {
 		public Node() {
@@ -20,9 +22,10 @@ public class LinkedList {
 	public void print() {
 		Node temp = head;
 		while (temp != null) {
-			System.out.println(temp.data);
+			System.out.print(temp.data + " => ");
 			temp = temp.next;
 		}
+		System.out.println();
 	}
 
 	public int size() {
@@ -96,7 +99,7 @@ public class LinkedList {
 			return;
 		}
 		Node last = getNodeAt(size() - 1);
-		Node nn = new Node(50);
+		Node nn = new Node(ali);
 		last.next = nn;
 	}
 
@@ -156,7 +159,105 @@ public class LinkedList {
 		return curr.data;
 	}
 
+	public void add(int ali) {
+		addLast(ali);
+	}
+
 	public void Rev() {
+		Node curr = head;
+		Node prev = null;
+		while (curr != null) {
+			Node after = curr.next;
+			///
+			curr.next = prev;
+			///
+			prev = curr;
+			curr = after;
+		}
+		head = prev;
+	}
+
+	public void Rev2() {
+		// TODO Auto-generated method stub
+		Rev2(head);
+	}
+
+	private Node Rev2(Node nn) {
+		if (nn.next == null) {
+			head = nn;
+			return nn;
+		}
+		Node Tail = Rev2(nn.next);
+		Tail.next = nn;
+		nn.next = null;
+		return nn;
+	}
+
+	public void revK(int k) {
+		head = revK(head, k);
+	}
+
+	private Node revK(Node nn, int k) {
+		if (nn == null) {
+			return null;
+		}
+		Node temp = nn;
+		for (int i = 0; i < k; i++) {
+			if (temp == null) {
+				return nn;
+			}
+			temp = temp.next;
+		}
+		Node head = revK(temp, k);
+
+		Node curr = nn;
+		Node prev = null;
+		for (int i = 0; i < k; i++) {
+			Node after = curr.next;
+//			System.out.println(curr.data);
+			curr.next = prev;
+			prev = curr;
+			curr = after;
+		}
+		nn.next = head;
+		return prev;
+	}
+
+	public void revK_Iter(int k) {
+		Node nhead = null;
+		Node ntail = null;
+		
+		
+		Stack<Node> S = new Stack<>();
+		Node curr = head;
+
+		while (curr != null) {
+			Node after = curr.next;
+//			System.out.println("!>?<!?>!?>");
+			S.add(curr);
+			if (S.size() == k) {
+//				Empty my stack and 
+//				insert all the Nodes in the new LL
+				while(!S.isEmpty()) {
+					Node nn = S.pop();
+//					 this nn needs to be inserted at the end of
+//					my LL
+					if(nhead==null) {
+						nhead = nn;
+						ntail = nn;
+						ntail.next = null;
+					}else {
+						ntail.next = nn;
+						ntail = nn;
+						ntail.next = null;
+					}
+				}
+				
+			}
+			curr = after;
+		}
+		head = nhead;
 
 	}
+
 }
