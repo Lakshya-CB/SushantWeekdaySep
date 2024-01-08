@@ -11,11 +11,12 @@ public class LinkedList_demo {
 		LL.add(60);
 		LL.add(70);
 		LL.add(80);
-		LL.add(90);
+//		LL.add(90);
 		LL.print();
 //		LL.Rev2();
-		LL.revK_Iter(3);
-		LL.print();
+//		LL.revK_Iter(3);
+//		LL.print();
+		LL.Mid();
 		
 
 	}

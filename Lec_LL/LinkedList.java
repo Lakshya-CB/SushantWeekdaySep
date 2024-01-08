@@ -226,8 +226,7 @@ public class LinkedList {
 	public void revK_Iter(int k) {
 		Node nhead = null;
 		Node ntail = null;
-		
-		
+
 		Stack<Node> S = new Stack<>();
 		Node curr = head;
 
@@ -238,21 +237,21 @@ public class LinkedList {
 			if (S.size() == k) {
 //				Empty my stack and 
 //				insert all the Nodes in the new LL
-				while(!S.isEmpty()) {
+				while (!S.isEmpty()) {
 					Node nn = S.pop();
 //					 this nn needs to be inserted at the end of
 //					my LL
-					if(nhead==null) {
+					if (nhead == null) {
 						nhead = nn;
 						ntail = nn;
 						ntail.next = null;
-					}else {
+					} else {
 						ntail.next = nn;
 						ntail = nn;
 						ntail.next = null;
 					}
 				}
-				
+
 			}
 			curr = after;
 		}
@@ -260,4 +259,48 @@ public class LinkedList {
 
 	}
 
+	public void Mid() {
+
+		Node slow = head;
+		Node fast = head;
+//		while (fast!=null||fast.next != null) { //A
+//		while (fast.next != null||fast!=null) { //B
+		while (fast != null && fast.next != null) {// C
+//		while (fast.next != null && fast!=null) { //D
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		System.out.println(slow.data);
+	}
+
+//	public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+//        ListNode c1 = headA;
+//        ListNode c2 = headB;
+//        while(c1!=c2){
+//            c1 = c1.next;
+//            c2  = c2.next;
+//            if(c1==c2){
+//                return c1; 
+//            }
+//            if(c1==null){
+//                c1 = headB;
+//            }
+//            if(c2==null){
+//                c2 = headA;
+//            }
+//        }
+//        return c1;
+//    }
+	public boolean hasCycle() {
+		Node slow = head;
+		Node fast = head;
+		while (fast != null && fast.next != null) { // D
+			slow = slow.next;
+			fast = fast.next.next;
+			if (slow == fast) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
