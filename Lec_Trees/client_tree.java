@@ -7,5 +7,6 @@ public class client_tree {
 		
 		BinaryTree BT = new BinaryTree(pre, in);
 		BT.print();
+		BT.lvlPrint2();
 	}
 }
