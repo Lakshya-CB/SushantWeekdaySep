@@ -13,10 +13,14 @@ public class Client_gen {
 
 		print(arr);
 		System.out.println("====");
-		sort(arr, new comp() );
-		System.out.println("====");
+		sort(arr);
 		print(arr);
+		System.out.println("====");
 		
+		sort(arr, new comp() );
+//		System.out.println("====");
+//		print(arr);
+//		
 	}
 	static class comp implements Comparator<Student>{
 
@@ -34,20 +38,20 @@ public class Client_gen {
 //			System.out.println(s);
 //		}
 //	}
-	public static <pui> void print(pui[] arr) {
-		for (pui s : arr) {
+	public static <W> void print(W[] arr) {
+		for (W s : arr) {
 //			s.
 			System.out.println(s);
 		}
 	}
-
+//
 	public static <T extends Comparable<T>> void sort(T[] arr) {
 		for (int cnt = 1; cnt <= arr.length; cnt++) {
 			for (int s = 0; s <= arr.length - 2; s++) {
 //				s and s+1!
 //				arr[s].compareTo(arr[s+1])
 //				if(arr[s].Age>arr[s+1].Age) {
-				
+//				arr[s].
 				if(arr[s].compareTo(arr[s+1])>0) {
 					T temp = arr[s];
 					arr[s] = arr[s+1];
@@ -56,7 +60,7 @@ public class Client_gen {
 			}
 		}
 	}
-	
+//	
 	public static <T> void sort(T[] arr , Comparator<T> obj ) {
 		for (int cnt = 1; cnt <= arr.length; cnt++) {
 			for (int s = 0; s <= arr.length - 2; s++) {
